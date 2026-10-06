@@ -1,0 +1,16 @@
+import React from 'react';
+import { IconFile, IconUpload, IconPaste, IconSpark, IconSend, IconLink } from './Icons.jsx';
+export default function Landing({ onPick, onHistory, documents, onOpen, hasKey, onSettings, onDemo, busy }) {
+  return <main className="landing new-landing"><div className="landing-hero">
+    <section className="hero-copy"><span className="eyebrow"><span className="status-dot" /> 你的论文阅读工作台</span><h2>读懂论文，<br /><span>从每一段开始。</span></h2><p>让原文和问题并排。把难懂的概念、公式与论证，<br className="desktop-br" />变成可以继续追问的理解。</p>
+      <div className="landing-actions"><button className="btn primary big" onClick={() => onPick('file')}><IconUpload width={18} /> 上传论文</button><button className="btn big" onClick={() => onPick('text')}><IconPaste width={18} /> 粘贴文本</button></div>
+      <div className="format-line"><span>WORD .docx</span><span>PDF</span><span>TXT</span><span>单文件 60 MB</span></div><button className="demo-link" onClick={onDemo} disabled={busy}>{busy ? '正在准备…' : '用一篇示例，试试逐段阅读'} ↗</button><div className="local-note"><span className="status-dot" /> 文档与问答保存在本机 · 提问时发送相关内容至 AI 接口</div>
+    </section>
+    <section className="reading-preview" aria-label="逐段提问示意"><div className="preview-top"><span><IconFile width={16} /> 一篇论文，一次读懂一点</span><em>逐段提问示意</em></div><div className="preview-labels"><span>论文原文</span><span>与原文对应的问题</span></div>
+      <div className="preview-row"><div><span className="preview-no">01</span><h4>研究的核心问题</h4><p>在有限的资源约束下，如何平衡模型规模、训练数据与质量投入？</p><div className="preview-lines"><i /><i /></div></div><div className="preview-question"><span>第 1 段 · 解释概念</span><p>这里的“资源约束”指什么？</p><div className="preview-answer"><IconSpark width={14} /><p>结合全文，它包括训练计算量和质量处理成本，需要放在同一预算中比较。</p></div></div></div>
+      <div className="preview-row second"><div><span className="preview-no">02</span><h4>方法与假设</h4><div className="preview-lines"><i /><i /><i /></div></div><div className="preview-question"><span>第 2 段</span><div className="preview-input">针对这一段，继续问… <IconSend width={15} /></div></div></div><div className="preview-bottom"><IconLink width={13} /> 问题跟着段落，回答结合全文</div>
+    </section>
+  </div><div className="home-bottom"><section className="recent-panel"><div className="section-top"><h3>最近阅读</h3><button className="mini" onClick={onHistory}>全部记录 →</button></div>{documents.length ? <div className="recent-docs">{documents.slice(0, 4).map((d) => <button key={d.id} className="document-card" onClick={() => onOpen(d.id)}><span className="file-tile"><IconFile width={22} /></span><div><strong>{d.title}</strong><span>{String(d.format || '文本').toUpperCase()} · {d.paragraphCount} 段 · {d.questionCount} 个问题</span></div><span className="card-arrow">↗</span></button>)}</div> : <div className="empty-recent">第一篇论文的理解，从这里开始。上传后会自动保留阅读记录。</div>}</section>
+    <section className="connection-card"><span className="eyebrow">阅读准备</span><h3><span className={hasKey ? 'status-dot' : 'status-dot waiting'} /> {hasKey ? 'DeepSeek 已配置' : '配置你的 DeepSeek'}</h3><p>{hasKey ? '上传或粘贴后，就能在每段旁提问。密钥由本机服务保存。' : '填写一次密钥，之后打开即可提问。也可以先体验文档解析。'}</p><button className="mini" onClick={onSettings}>{hasKey ? '查看设置' : '去配置密钥'} →</button></section>
+  </div><div className="home-steps"><span><b>01</b> 导入论文</span><i>→</i><span><b>02</b> 对照原文逐段阅读</span><i>→</i><span><b>03</b> 提问、追问与引用</span><i>→</i><span><b>04</b> 导出阅读笔记</span></div></main>;
+}

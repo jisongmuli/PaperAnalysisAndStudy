@@ -1,0 +1,38 @@
+{
+  "name": "paper-insight",
+  "version": "1.0.0",
+  "private": true,
+  "description": "论文/文档解析与段落级提问网站（DeepSeek 驱动）",
+  "type": "module",
+  "scripts": {
+    "postinstall": "node scripts/install-web.mjs",
+    "dev": "node scripts/dev.mjs",
+    "dev:server": "node server/index.js",
+    "dev:web": "npm --prefix web run dev",
+    "build": "npm --prefix web run build",
+    "start": "npm run build && node server/index.js",
+    "serve": "node server/index.js",
+    "test": "node scripts/selftest.mjs",
+    "test:reader": "node scripts/readertest.mjs",
+    "test:rich": "node scripts/richtest.mjs",
+    "test:math": "node scripts/mathtest.mjs",
+    "test:api": "node scripts/exporttest.mjs",
+    "test:regress": "node scripts/regressiontest.mjs",
+    "test:live": "node scripts/livetest.mjs",
+    "test:ai": "node scripts/aitest.mjs",
+    "test:ui": "node scripts/uicheck.mjs",
+    "mock:api": "node scripts/mock-deepseek.mjs",
+    "icon": "node scripts/make-icon.mjs",
+    "shortcut": "node scripts/make-icon.mjs && node scripts/create-shortcut.mjs"
+  },
+  "dependencies": {
+    "@napi-rs/canvas": "^1.0.10",
+    "@xmldom/xmldom": "^0.9.12",
+    "cors": "^2.8.5",
+    "docx": "^9.5.1",
+    "express": "^4.21.2",
+    "jszip": "^3.10.2",
+    "multer": "^2.0.2",
+    "pdfjs-dist": "^4.10.38"
+  }
+}

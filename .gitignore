@@ -1,0 +1,31 @@
+# 依赖
+node_modules/
+web/node_modules/
+
+# 构建产物
+web/dist/
+
+# KaTeX 运行时副本（由 scripts/copy-katex.mjs 在构建时生成）
+web/public/vendor/
+
+# 运行时数据（文档、问答记录、上传文件、密钥配置）
+data/*
+!data/samples/
+!data/samples/sample.docx
+!data/samples/sample.pdf
+data/samples/_figure1.png
+
+# 密钥
+.env
+.env.*
+!.env.example
+
+# 历史截图不随源码发布；新预览使用公开示例文档
+docs/screenshots/*
+!docs/screenshots/reader-preview.png
+!docs/screenshots/mobile-preview.png
+
+# 其他
+*.log
+.DS_Store
+Thumbs.db

@@ -1,0 +1,20 @@
+{
+  "name": "paper-insight-web",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node ../scripts/copy-katex.mjs && vite",
+    "build": "node ../scripts/copy-katex.mjs && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "katex": "^0.19.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.3.4",
+    "vite": "^5.4.11"
+  }
+}
