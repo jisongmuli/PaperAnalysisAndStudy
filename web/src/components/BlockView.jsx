@@ -6,8 +6,9 @@ import { IconZoom, IconFormula, IconTable, IconImage, IconBook, IconEdit, IconCh
 /** 图片按原始像素等比缩放，避免小图被拉糊、大图溢出 */
 function imageStyle(im) {
   const w = Number(im.width);
-  if (Number.isFinite(w) && w > 0 && w < 520) {
-    return { width: `${w}px`, maxWidth: '100%' };
+  const h = Number(im.height);
+  if (Number.isFinite(w) && w > 0) {
+    return { width: `${w}px`, maxWidth: '100%', ...(Number.isFinite(h) && h>0 ? {aspectRatio:`${w} / ${h}`} : {}) };
   }
   return { maxWidth: '100%' };
 }

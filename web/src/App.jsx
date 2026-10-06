@@ -507,7 +507,7 @@ export default function App() {
       const requestRevision = docRevision.current;
       const target = paragraphs.find((p) => p.id === paragraphId);
       const originalCanvas = target && leftInnerRef.current?.children[target.index]?.querySelector('.pdf-snippet canvas');
-      const sourceImage = originalCanvas?.style.display === 'block' ? originalCanvas.toDataURL('image/png') : undefined;
+      const sourceImage = originalCanvas?.dataset.ready === 'true' ? originalCanvas.toDataURL('image/png') : undefined;
       setPending((p) => ({
         ...p,
         [key]: { text: '', citedParagraphIds: citedParagraphIds || [], streaming: true },
